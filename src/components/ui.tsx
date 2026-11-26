@@ -5,12 +5,13 @@ import { DEFECT_LABEL, STATUS_LABEL } from '../lib/format';
 import { cx } from '../lib/styles';
 
 
-type Variant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'pass' | 'fail' | 'blocked';
+type Variant = 'primary' | 'secondary' | 'accent' | 'ghost' | 'danger' | 'pass' | 'fail' | 'blocked';
 const VARIANT: Record<Variant, string> = {
-  primary: 'bg-navy text-white hover:bg-navy-800 focus-visible:ring-navy-300',
-  secondary: 'bg-white text-slate-800 border border-slate-300 hover:bg-slate-50 focus-visible:ring-navy-200',
-  ghost: 'text-slate-700 hover:bg-slate-100 focus-visible:ring-navy-200',
-  danger: 'bg-fail text-white hover:opacity-90 focus-visible:ring-red-200',
+  primary: 'border border-deep bg-deep text-white hover:bg-navy-800',
+  secondary: 'border border-slate-300 bg-white text-ink hover:bg-slate-50',
+  accent: 'border border-magenta bg-magenta text-white hover:opacity-90',
+  ghost: 'text-slate-700 hover:bg-light-blue',
+  danger: 'border border-red-500 bg-red-100 text-red-700 hover:bg-red-200',
   pass: 'bg-pass text-white hover:opacity-90 focus-visible:ring-green-200',
   fail: 'bg-fail text-white hover:opacity-90 focus-visible:ring-red-200',
   blocked: 'bg-blocked text-white hover:opacity-90 focus-visible:ring-amber-200',
@@ -21,7 +22,7 @@ export function Button({ variant = 'primary', size = 'md', className, ...p }: Bu
     <button
       {...p}
       className={cx(
-        'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition focus:outline-none focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-50',
+        'inline-flex items-center justify-center gap-2 font-medium transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
         size === 'sm' ? 'h-8 px-3 text-sm' : size === 'lg' ? 'h-12 px-5 text-base' : 'h-10 px-4 text-sm',
         VARIANT[variant],
         className,
@@ -31,7 +32,7 @@ export function Button({ variant = 'primary', size = 'md', className, ...p }: Bu
 }
 
 export function Card({ className, children }: { className?: string; children: ReactNode }) {
-  return <div className={cx('rounded-xl border border-slate-200 bg-white shadow-card', className)}>{children}</div>;
+  return <div className={cx('border border-gray-200 bg-white shadow-card', className)}>{children}</div>;
 }
 
 const STATUS_STYLE: Record<CaseStatus, string> = {

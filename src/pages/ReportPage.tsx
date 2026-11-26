@@ -80,7 +80,7 @@ function ReportView({ report: r, onPdf, back, note }: { report: AuditReport; onP
           <div className="flex items-start justify-between gap-6">
             <div>
               <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
-                <img src={brand.logo} alt="" className="h-6 w-6 rounded ring-1 ring-white/30" /> {r.brand.company}
+                <img src={brand.logo} alt="" className="round h-6 w-6 bg-white" /> {r.brand.company}
               </p>
               <h1 className="mt-6 text-4xl font-semibold">UAT Report</h1>
               <p className="mt-2 text-lg text-white/90">

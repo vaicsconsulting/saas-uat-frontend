@@ -2,12 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+/* VAICS look, copied from the Change Management System (CMS-Frontend src/index.css). */
 @layer base {
+  :root {
+    --change-focus-glow: 0 0 0 3px rgb(13 71 161 / 14%);
+  }
   html {
     -webkit-font-smoothing: antialiased;
   }
   body {
-    @apply bg-slate-50 font-sans text-slate-900;
+    @apply bg-white font-sans text-ink;
+  }
+  input,
+  select,
+  textarea {
+    border-color: #cbd5e1;
+  }
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus-visible {
+    border-color: #0d47a1 !important;
+    box-shadow: var(--change-focus-glow) !important;
+    outline: none !important;
+  }
+  kbd {
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    padding: 0 4px;
+    font-size: 11px;
+  }
+}
+
+/* Corporate box UI: square corners everywhere except pills, dots and spinners (rounded-full) or `.round`. */
+:where([class*='rounded']):not([class*='rounded-full']):not(.round) {
+  border-radius: 0 !important;
+}
+.round {
+  border-radius: 9999px !important;
+}
+
+@layer components {
+  .shell {
+    border: 1px solid #b8d0e8;
+    background: #f2f8ff;
+    padding: 16px;
+  }
+  .thead-navy {
+    background: #0d47a1;
+    color: #fff;
+  }
+  .trow:nth-child(odd) {
+    background: #fff;
+  }
+  .trow:nth-child(even) {
+    background: #f2f8ff;
+  }
+  .trow:hover {
+    background: #e3eef8;
   }
 }
 

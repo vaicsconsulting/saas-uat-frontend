@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../api/client';
-import { Logo } from '../components/Layout';
+import { brand } from '../brand';
 import { Button, Field } from '../components/ui';
 import { inputCls } from '../lib/styles';
 import { useAuth } from '../lib/auth';
@@ -9,15 +9,13 @@ import { errText } from '../lib/toast';
 
 export function AuthShell({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
-      <div className="w-full max-w-sm">
-        <div className="mb-6 flex justify-center">
-          <Logo />
-        </div>
-        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-card">
-          <h1 className="mb-4 text-lg font-semibold text-slate-900">{title}</h1>
-          {children}
-        </div>
+    <div className="relative flex min-h-screen items-center justify-center p-6">
+      <img src={brand.hero} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="relative w-full max-w-sm border border-panel bg-white p-6 shadow-lg">
+        <img src={brand.logoFull} alt={brand.company} className="mb-1 h-12" />
+        <p className="mb-5 text-sm font-medium tracking-wide text-ink">{brand.product}</p>
+        <h1 className="mb-4 text-lg font-semibold text-ink">{title}</h1>
+        {children}
       </div>
     </div>
   );
